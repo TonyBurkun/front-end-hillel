@@ -29,7 +29,7 @@ function requestValueAndCompareWithRandomValue(randomValue) {
     let userValue = getValueFromUser();
 
     if (userValue === null) {
-        return true;
+        return null;
     } else {
         userValue = +userValue;
     }
@@ -51,7 +51,7 @@ function runGuessValueApp(){
     do {
         //we can generate the random value here and then pass it into the function bellow. in this case, user value will be compared with the permanent value
         let compareResult = requestValueAndCompareWithRandomValue();
-        if (compareResult) {
+        if (compareResult === null) {
             alert('You closed the app');
             break;
         } else {
