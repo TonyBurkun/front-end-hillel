@@ -2,12 +2,15 @@
 // Пересоздавать массив кол-во раз, указанное пользователем.
 //Если хоть один раз средняя линия будет совпадать - сообщить о победе в рулетке.
 
+const SETTINGS = {
+    lineLength: 4
 
+};
 
 function generateRouletteArr (){
     let wrapperArr = [];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < SETTINGS.lineLength; i++) {
         let innerArr = [];
         for (let item = 0; item < 3; item++){
             innerArr.push(Math.floor( Math.random() * 5));
