@@ -17,7 +17,6 @@ function getDateFromUser(){
     return valueFromUser;
 }
 
-
 function checkDateFormatFromUser(valueFromUser){
     let dateFormatIsValid = true;
     valueFromUser = String(valueFromUser);
@@ -69,16 +68,13 @@ function checkDateFormatFromUser(valueFromUser){
 function getHoursPassedFromEnteredDate(date){
     let filledDate =  Date.parse(date);
     let currentDate =  Date.now();
-
     let hoursPassedFromEnteredDate = (currentDate - filledDate)/1000/60/60;
-
 
     console.log('Amount of hours which were passed from the entered Date: ' + hoursPassedFromEnteredDate)
 }
 
-
 let dateValue = getDateFromUser();
-console.log(dateValue);
+// console.log(dateValue);
 if (dateValue === null) {
     console.log('You CLOSE THE APP')
 }
