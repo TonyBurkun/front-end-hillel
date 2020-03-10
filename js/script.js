@@ -21,3 +21,43 @@
 //Object.prototype
 
 //{}.__proto__
+
+
+
+// function getStatus(arr){
+//     for(let i = 0; i< arr.length; i++){
+//         if (arr[i] >= 3) {
+//             return true;
+//         }
+//     }
+//
+//     return false
+// }
+//
+// console.log(getStatus([1,3,2]));
+
+
+function getStatus(arr){
+    for(let i = 0; i< arr.length; i++){
+       console.log(arr[i]);
+    }
+
+}
+
+getStatus([1,3,2]);
+
+var debug = true;
+
+function log(info){
+    if (debug) {
+        console.log(info)
+    }
+}
+
+let a = [1,2,3].some(function (num) {
+    return num > 1
+});
+log(a);
+
+
+
