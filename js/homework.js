@@ -38,8 +38,7 @@ console.log(mapResult);
 function filter(arr, cb) {
     let newArr = [];
     for (let i = 0; i < arr.length; i++) {
-        let item = cb(arr[i], i, arr);
-        if (item) {
+        if (cb(arr[i], i, arr)) {
             newArr.push(arr[i]);
         }
     }
@@ -58,19 +57,16 @@ console.log(filterResult);
 // some([1,2,3], function(num, index) { return index > 1 }) // -> true
 
 function some(arr, cb) {
-    let result = false;
-
 
     for (let i = 0; i < arr.length; i++) {
         let item = cb(arr[i], i, arr);
         if (item) {
-            result = true;
-            return result;
+            return true;
         }
 
     }
 
-    return result;
+    return false;
 
 }
 
@@ -84,17 +80,13 @@ console.log(someResult);
 
 // every([1,2,3], function(num) { return num > 0 }) // -> true
 function every(arr, cb) {
-    let result = true;
-
     for (let i = 0; i < arr.length; i++) {
         let item = cb(arr[i], i, arr);
         if (!item) {
-            result = false;
-            return result;
+            return false;
         }
-
     }
-    return result;
+    return true;
 }
 
 let everyResult = every([1,2,3], (number, index) => {
