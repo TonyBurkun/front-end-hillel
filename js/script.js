@@ -1,63 +1,107 @@
-// var obj = Object.create(Object.prototype, {
-//     a: {
-//         enumerable: false,
-//         value: 2
-//     },
-//     b: {
-//         value: 3,
-//         enumerable: true
-//     }
-// });
-//
-// var obj2 = {
-//     a: 2
-// };
-//
-// for (var key in obj) {
-//     console.log(key);
-// }
+function Pers(health, level, race, weapon){
+    this.health = health;
+    this.level = level;
+    this.race = race;
+    this.weapon = weapon;
+}
 
-
-//Object.prototype
-
-//{}.__proto__
-
-
-
-// function getStatus(arr){
-//     for(let i = 0; i< arr.length; i++){
-//         if (arr[i] >= 3) {
-//             return true;
-//         }
-//     }
-//
-//     return false
-// }
-//
-// console.log(getStatus([1,3,2]));
-
-
-function getStatus(arr){
-    for(let i = 0; i< arr.length; i++){
-       console.log(arr[i]);
-    }
+function randomValue(value){
+    return Math.floor(Math.random()*value);
 
 }
 
-getStatus([1,3,2]);
+let race = {
+    orc: 'Orc',
+    elf: 'Elf',
+    dwarf: 'Dwarf'
+};
 
-var debug = true;
 
-function log(info){
-    if (debug) {
-        console.log(info)
-    }
+
+let weapons = {
+    axe: 'Axe',
+    sword: 'Sword',
+    bow: 'Bow'
+};
+
+//
+// randomValue(Object.keys(race).length);
+// console.log(Object.keys(race)[1]);
+
+
+let persArr = [];
+console.log(race, randomValue(2));
+for (let i = 0; i < 3; i++) {
+    persArr.push(new Pers(
+        randomValue(100),
+        randomValue(10),
+        Object.values(race)[randomValue(Object.keys(race).length)],
+        Object.values(weapons)[randomValue(Object.keys(weapons).length)]
+        )
+    )
+
 }
 
-let a = [1,2,3].some(function (num) {
-    return num > 1
+console.log(persArr);
+
+persArr.forEach(item => {
+    item.health > 50 ? console.log('ready') : console.log('not ready')
+
 });
-log(a);
+
+let raceArr = persArr.map(item => {
+    return item.race;
+});
+
+console.log(raceArr);
+
+let threeLevelArr = persArr.filter(item => {
+    return item.level > 3
+});
+
+console.log(threeLevelArr);
+
+
+
+
+let firsPersWithLevel = persArr.find(item => {
+    return item.level > 5;
+});
+
+console.log(firsPersWithLevel);
+
+let findIndexPers = persArr.findIndex(item => {
+    return item.level > 5
+});
+
+console.log(findIndexPers);
+
+
+
+var attackTypes = {
+    mellee: ['sword', 'axe'],
+    range: ['bow']
+};
+
+
+let melleAttack = persArr.filter(item => {
+
+})
+
+
+
+
+function increment(number) {
+    return function(){
+        return  ++number
+    }
+}
+
+
+var inc = increment(5);
+
+console.log(inc(), inc(), inc());
+
 
 
 
