@@ -20,18 +20,15 @@ app.post('/favourites', function (req, res) {
 
 app.delete('/favourites/:id', function (req, res) {
     const {id} = req.params;
-    let arrIndex = null;
 
-    let findArrElement = favourites.find((item, index) => {
-        if (toString(item.id) === toString(id)) {
-            // converted to string because of ID can be as a number as complex string.
-            arrIndex = index;
-            return true;
-        }
+    let indexElem = favourites.findIndex(item => {
+        let objID = JSON.stringify(item.id);
+        return objID === id
     });
 
-    if (findArrElement && arrIndex !== null){
-        favourites.splice(arrIndex, 1);
+
+    if (~indexElem){
+        favourites.splice(indexElem, 1);
         res.send('Deleted');
     } else {
         res.send('Nothing to delete');
