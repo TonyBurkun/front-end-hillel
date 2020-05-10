@@ -64,9 +64,3 @@ Squad.prototype.cloneResources = function (resources) {
         return item.clone();
     })
 };
-
-let solder = new MilitaryResource('solder', 11, 15);
-let solder2 = new MilitaryResource('solder2', 11, 1);
-
-
-let warriors = new Squad([solder, solder2]);

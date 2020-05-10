@@ -8,9 +8,11 @@
 }
 
 .card{
+    position: relative;
     width: 250px;
     height: 400px;
-    background: gray;
+    background: darkseagreen;
+    border: 1px solid green;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 25px;
@@ -18,6 +20,23 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+}
+
+.card.disabled{
+    background: gray;
+}
+
+.card.disabled:before{
+    content: '';
+    background: gray;
+    opacity: 0.5;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
 }
 
 h3{
@@ -30,28 +49,60 @@ h3{
     position: relative;
     width: 100%;
     height: 20px;
-    background: red;
     margin-bottom: 10px;
+    border: 1px solid dimgrey;
+    cursor: pointer;
 }
 
-.health{
+.bar__inner{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.bar__inner--health{
     background: red;
+}
+
+.bar__inner--stamina{
+    background: deepskyblue;
+}
+
+.health, .stamina{
+    background: ghostwhite;
+}
+
+.bar-value-wrapper{
+    position: absolute;
+    right: 10px;
+    display: flex;
+    height: 100%;
+    top: 0;
 }
 
 .bar-value{
-    position: absolute;
-    color: #fff;
+    color: black;
     right: 5px;
+    font-weight: bold;
     font-size: 12px;
+    font-family: Helvetica sans-serif;
     display: flex;
     align-items: center;
     height: 100%;
+    z-index: 1;
+}
 
-    font-family: Helvetica sans-serif;
+.value-separator{
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .stamina{
-    background: deepskyblue;
+
 }
 
 .avatar{
