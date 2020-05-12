@@ -21,9 +21,9 @@ function inputFileToPage(data, element){
 
 
 
-get(baseURL, (data) => {
-   inputFileToPage(data, wrapper);
-});
+get(baseURL)
+    .then(data => inputFileToPage(data, wrapper));
+
 
 let button = createElement('button', {classes: ['button']});
 button.innerHTML = 'Load more';
@@ -31,13 +31,14 @@ wrapper.after(button);
 button.addEventListener('click', () => {
     let nextPageURL= baseURL + '?page=' + counter;
     counter = ++counter;
-    get(nextPageURL, (data) => {
-      inputFileToPage(data, wrapper);
+    get(nextPageURL)
+        .then(data => {
+            inputFileToPage(data, wrapper);
 
-      if (!data.info.next){
-          button.setAttribute('disabled', 'disabled');
-      }
-    })
+            if (!data.info.next){
+                button.setAttribute('disabled', 'disabled');
+            }
+        })
 });
 
 
