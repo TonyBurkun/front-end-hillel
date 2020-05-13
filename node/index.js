@@ -1,11 +1,22 @@
-console.log("Hello");
+let http = require('http');
+let createUserMocks = require('./lib/user_mock').createUserMocks;
 
-var fs = require("fs");
-fs.writeFile("message.txt", "hello NodeJS", function(err){
-    if (err) console.log("Error", err);
-    console.log('FIle has been uploaded');
+
+let server = http.createServer(function(req, res){
+    res.writeHead(200);
+
+    let getUserArr = new Promise((resolve, error) => {
+        let usersArr = createUserMocks(5);
+        resolve(usersArr)
+    });
+    getUserArr
+        .then(data => {
+            res.end(JSON.stringify(data));
+        });
+
 });
 
-fs.readFile("message.txt", function (_, data) {
-    console.log(data.toString('utf8'));
-});
+server.listen(8080);
+
+
+
