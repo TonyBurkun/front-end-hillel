@@ -13,24 +13,24 @@ getUserArr
     });
 
 
-app.get('/', function (req, res) {
+app.get('/',  (req, res) => {
     res.send('App works');
 });
 
 app.use(express.json());
 
 
-app.get('/users', function (req, res) {
+app.get('/users', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
     res.json(users);
 });
 
-app.post('/users', function (req, res) {
+app.post('/users', (req, res) => {
     users.push(req.body);
     res.send('Saved');
 });
 
-app.delete('/users/:id', function (req, res) {
+app.delete('/users/:id', (req, res) => {
     const {id} = req.params;
     let arrIndex = null;
 
@@ -51,6 +51,6 @@ app.delete('/users/:id', function (req, res) {
 
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
     console.log('Run');
 });
