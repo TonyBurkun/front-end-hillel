@@ -4,7 +4,7 @@ const baseURL = 'http://localhost:3000';
 axios.get(`${baseURL}/users`)
     .then(function(data){
         let userDataArr = data.data;
-       let app =  document.getElementById('app');
+        let app =  document.getElementById('app');
 
         userDataArr.forEach(item => {
             let ul = document.createElement('ul');
